@@ -2,6 +2,7 @@
 
 ## Overview
 
+- Game files: [How to Pronounce Iwan on itch.io](https://iwanplays.itch.io/iwan)
 - Engine: Unity
 - Game type: Arena combat
 - Networking: No active networking has been confirmed
@@ -37,8 +38,24 @@ The assembly browser shows game classes including `ArenaControl`, `Explosion`, `
 
 ### Movement
 
-- `CharacterMotor` manages player movement physics, including velocity, acceleration, and gravity.
-- Related helper classes include `CharacterMotorMovement` and `CharacterMotorJumping`.
+- `CharacterMotor` requires a `CharacterController`; movement runs in `FixedUpdate` by default (`useFixedUpdate` switches to `Update`). Inputs: `inputMoveDirection`, `inputJump`.
+- `CharacterMotorMovement`, `CharacterMotorJumping`, `CharacterMotorMovingPlatform`, and `CharacterMotorSliding` hold movement settings and state.
+- Separate ground/air acceleration; gravity capped by `maxFallSpeed`; ground speed adjusts to slope.
+- Jump input is buffered for 0.2 seconds. Holding jump extends jump height; steep slopes change jump direction. Jump calls `OnJump` and plays an attached `AudioSource`.
+- Steep slopes can slide. Moving platforms track and transfer platform velocity according to `movementTransfer`.
+- Ground transitions send `OnFall` / `OnLand`; `SetVelocity()` sends `OnExternalVelocity`.
+
+![CharacterMotor methods and Shoot search results](image-6.png)
+
+#### FirstPersonControl
+
+- Separate `CharacterController`-based controller; attachment alongside `CharacterMotor` is unverified. Spawns at `PlayerSpawn` when present.
+- Requires `moveTouchPad` and `cameraPivot`; `rotateTouchPad` is optional. Movement/jump defaults: forward 4, backward/sideways 1, jump 8, air control 0.25.
+- Double-tap the active joystick to jump; release before jumping again. Look uses `rotateTouchPad` or device tilt and updates only while grounded.
+- `OnEndGame()` disables the joysticks and controller.
+- Possible double gravity while airborne: gravity updates vertical velocity and is also added to motion. Verify in-game.
+
+![FirstPersonControl fields in the decompiler](image-7.png)
 
 ### User, achievements, and leaderboards
 

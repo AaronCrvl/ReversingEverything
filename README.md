@@ -4,7 +4,7 @@ Taking things apart to see how they work. This repository collects reverse-engin
 
 ## Games
 
-- [How to Pronounce Iwan](games/How%20To%20Pronounce%20Iwan/NOTAS.MD): Unity game notes covering gameplay systems, code findings, screenshots, and open questions.
+- [How to Pronounce Iwan](games/How%20To%20Pronounce%20Iwan/): game folder with [reverse-engineering notes](games/How%20To%20Pronounce%20Iwan/NOTAS.md), mods, and tools.
 
 ## Using this repository
 
