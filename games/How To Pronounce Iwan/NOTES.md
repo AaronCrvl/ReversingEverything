@@ -10,7 +10,7 @@
 
 The assembly browser shows game classes including `ArenaControl`, `Explosion`, `Gun`, `Health`, `Poison`, `Robot_Gun`, `Robot_Move`, and `WeaponManager`.
 
-![Game assembly and class list](image-5.png)
+![Game assembly and class list](images/image-5.png)
 
 ## Systems
 
@@ -23,8 +23,8 @@ The assembly browser shows game classes including `ArenaControl`, `Explosion`, `
 - Guns and enemy guns have separate classes.
 - Combat takes place in an arena, and the game includes explosions.
 
-![Weapon manager code](image-1.png)
-![Gun reload code](image-2.png)
+![Weapon manager code](images/image-1.png)
+![Gun reload code](images/image-2.png)
 
 ### Player health and damage
 
@@ -33,8 +33,8 @@ The assembly browser shows game classes including `ArenaControl`, `Explosion`, `
 - The screenshot shows initial health of 100, explosion damage of 4, melee damage of 1, and fire damage of 1. The bullet damage value is not initialized in the visible code.
 - `Poison` checks for the `Player` tag and calls `Health.dead()`, which sets player health to zero. This appears to be an instant kill rather than gradual poison damage.
 
-![Health class and damage values](image-3.png)
-![Poison trigger behavior](image-4.png)
+![Health class and damage values](images/image-3.png)
+![Poison trigger behavior](images/image-4.png)
 
 ### Movement
 
@@ -45,7 +45,7 @@ The assembly browser shows game classes including `ArenaControl`, `Explosion`, `
 - Steep slopes can slide. Moving platforms track and transfer platform velocity according to `movementTransfer`.
 - Ground transitions send `OnFall` / `OnLand`; `SetVelocity()` sends `OnExternalVelocity`.
 
-![CharacterMotor methods and Shoot search results](image-6.png)
+![CharacterMotor methods and Shoot search results](images/image-6.png)
 
 #### FirstPersonControl
 
@@ -55,7 +55,7 @@ The assembly browser shows game classes including `ArenaControl`, `Explosion`, `
 - `OnEndGame()` disables the joysticks and controller.
 - Possible double gravity while airborne: gravity updates vertical velocity and is also added to motion. Verify in-game.
 
-![FirstPersonControl fields in the decompiler](image-7.png)
+![FirstPersonControl fields in the decompiler](images/image-7.png)
 
 ### User, achievements, and leaderboards
 
@@ -63,7 +63,7 @@ The assembly browser shows game classes including `ArenaControl`, `Explosion`, `
 - A local leaderboard method exists, but `Local.ShowLeaderboardUI()` logs `ShowLeaderboardUI not implemented`.
 - In the local playthrough, leaderboard points are not saved and the UI shows no leaderboard data.
 
-![Local leaderboard method](image.png)
+![Local leaderboard method](images/image.png)
 
 ## Persistence and networking
 
